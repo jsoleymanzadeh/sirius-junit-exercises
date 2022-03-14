@@ -29,4 +29,21 @@ public class StudentTest {
         adam.addGrade(80);
         assertEquals(adam.getGradeAverage(), 85, 0);
     }
+    @Test
+    public void testUpdateGrade() {
+        Student adam = new Student("Adam", 1);
+        adam.addGrade(80);
+        adam.updateGrade(90, 0);
+        ArrayList<Integer> testGrades = new ArrayList<>();
+        testGrades.add(90);
+        assertEquals(adam.getGrades(), testGrades);
+    }
+    @Test
+    public void testDeleteGrade() {
+        Student adam = new Student("Adam", 1);
+        adam.addGrade(80);
+        adam.deleteGrade(0);
+        ArrayList<Integer> testGrades = new ArrayList<>();
+        assertEquals(adam.getGrades(), testGrades);
+    }
 }
