@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -5,45 +6,48 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class StudentTest {
+    Student adam;
+    ArrayList<Integer> testGrades;
+
+    @Before
+    public void setUp() {
+        adam = new Student("Adam", 1);
+        testGrades = new ArrayList<>();
+    }
+
     @Test
     public void testConstructor() {
-        Student adam = new Student("Adam", 1);
         assertEquals("Adam", adam.getName());
         assertEquals(1, adam.getId());
-        assertEquals(new ArrayList<Integer>(), adam.getGrades());
+        assertEquals(testGrades, adam.getGrades());
     }
 
     @Test
     public void testAddGrade() {
-        Student adam = new Student("Adam", 1);
         adam.addGrade(90);
-        ArrayList<Integer> testGrades = new ArrayList<>();
         testGrades.add(90);
-        assertEquals(adam.getGrades(), testGrades);
+        assertEquals(testGrades, adam.getGrades());
     }
 
     @Test
     public void testGetGradeAverage() {
-        Student adam = new Student("Adam", 1);
         adam.addGrade(90);
         adam.addGrade(80);
-        assertEquals(adam.getGradeAverage(), 85, 0);
+        assertEquals(85, adam.getGradeAverage(), 0);
     }
+
     @Test
     public void testUpdateGrade() {
-        Student adam = new Student("Adam", 1);
         adam.addGrade(80);
         adam.updateGrade(90, 0);
-        ArrayList<Integer> testGrades = new ArrayList<>();
         testGrades.add(90);
-        assertEquals(adam.getGrades(), testGrades);
+        assertEquals(testGrades, adam.getGrades());
     }
+
     @Test
     public void testDeleteGrade() {
-        Student adam = new Student("Adam", 1);
         adam.addGrade(80);
         adam.deleteGrade(0);
-        ArrayList<Integer> testGrades = new ArrayList<>();
-        assertEquals(adam.getGrades(), testGrades);
+        assertEquals(testGrades, adam.getGrades());
     }
 }
